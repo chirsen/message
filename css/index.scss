@@ -1,0 +1,45 @@
+.message-box-wrap {
+    position: fixed;
+    z-index: 1;
+    .icon {
+        width: 62px;
+        cursor: pointer;
+        .tips {}
+    }
+    .message-box-list-wrap {
+        position: fixed;
+        .message-box-list {
+            .header {
+                .title {
+                    .tips {}
+                }
+                .close {}
+            }
+            .content {
+                .navs {
+                    .nav-item {
+                        .tips {}    
+                    }
+                    .nav-active {}
+                }
+                .right-content {
+                    .message-list {
+                        .message-item {
+                            .title {}
+                            .date {}
+                            .message-tips {
+                                .message-line {}
+                                .to-solve {}
+                            }
+                        }
+                        .message-will {}
+                    }
+                }
+            }
+
+        }
+    }
+    .message-box-info-wrap {
+        position: relative;
+    }
+}
