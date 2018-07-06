@@ -4,7 +4,7 @@ import { messageTypeMap, typeList } from './config'
 import classNames from 'classnames';
 
 const showTyps = typeList.map(key => messageTypeMap[key]);
-export default class MessageBoxList extends Component {
+class MessageBoxList extends Component {
     state = {
         curType: 2
     }
@@ -17,10 +17,10 @@ export default class MessageBoxList extends Component {
     render() {
         return (
             <div className="message-box-list-wrap">
-                <MessageBoxList.Head />
+                <Head num={0} trigger={()=>{}}/>
                 <div className="content">
-                    <MessageBoxList.Nav focusType={curType} messageTyps={showTyps} changeType={this.changeTypeHandler}/>
-                    <MessageBoxList.List type={2}/>
+                    <Nav focusType={this.state.curType} showTyps={showTyps} changeType={this.changeTypeHandler}/>
+                    <List type={2}/>
                 </div>
             </div>
         );
@@ -28,7 +28,7 @@ export default class MessageBoxList extends Component {
 }
 
 // 头部
-MessageBoxList.Head = (props) => {
+const Head = (props) => {
     return (
         <div className="header">
             <div className="title">
@@ -40,22 +40,25 @@ MessageBoxList.Head = (props) => {
 }
 
 // 内容的nav
-MessageBoxList.Nav = (props) => {
-    const { focusType, showTyps, changeTypeHandler } = props;
+const Nav = (props) => {
+    const { focusType, showTyps, changeType } = props;
     return (
         <ul className="navs">
-            showTyps.map(({type, typeName}) => {
-                <li className={classNames("nav-item", {"nav-active": focusType === type})} 
-                    onClick={(e) => changeTypeHandler(type)}>
-                    {typeName}
+            {Object.keys(showTyps).map((type) => 
+                <li className={classNames("nav-item", {"nav-active": focusType === (1+type)})} 
+                    onClick={(e) => changeType(1 + type)}>
+                    {showTyps[type]}
                 </li>
-            })
+            )}
         </ul>
     );
 }
 // 内容的消息列表
-MessageBoxList.List = (props) => {
+const List = (props) => {
     const openMsg = 0;
     const {type} = props;
-    // 根据
+    // 根据 type 值请求后台，获取列表
+    return (<div></div>);
 }
+
+export default MessageBoxList;
